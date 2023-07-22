@@ -13,7 +13,7 @@ class StoreUserRequest extends FormRequest
         return true;
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => ['required', 'min:5', 'max:255'],

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Events\UserRegisterEvent;
 use App\Models\User;
 
 class UserService
@@ -15,6 +16,8 @@ class UserService
             'email' => $userDetails['email'],
             'password' => bcrypt($userDetails['password']),
         ]);
+
+        UserRegisterEvent::dispatch($user);
 
         return $user;
     }
